@@ -1,6 +1,9 @@
 $('document').ready(function(){
+
+    directory = window.location.pathname;
+    directory = directory.substring(0, directory.lastIndexOf('/')) + "/";
     var students = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james", "jeff", "jong", "jonk", "jordan", "lauren", "margaret", "matt", "mike", "patrick", "rex", "rob", "ryan", "scott", "steph", "tyler", "zain"];
-    var players = ["devan", "alon", "andrew", "ryan", "lauren", "tyler", "matt", "margaret", "mike"];
+    players = ["devan", "alon", "andrew", "ryan", "lauren", "tyler", "matt", "margaret", "mike"];
 
     document.getElementById("1").src = "images/default/" + players[0] + ".png";
     document.getElementById("2").src = "images/default/" + players[1] + ".png";
@@ -16,6 +19,12 @@ $('document').ready(function(){
     var texts = document.getElementsByClassName("text");
     var deciding = false;
 
+    var ding = document.createElement('audio');
+    ding.setAttribute('src', 'ding.mp3');
+
+    var win = document.createElement('audio');
+    win.setAttribute('src', 'win.mp3');
+
     function isWinner(array) {
         var winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
         for ( i = 0; i < winCombos.length; i++ ) {
@@ -30,18 +39,35 @@ $('document').ready(function(){
     var xPositions = [];
     var oPositions = [];
 
+    function winFlash(array) {
+        var flashing = setInterval(function(){
+            for ( i = 0; i < array.length; i++ ) {
+                if ( $( "#" + array[i] )[0].src === "file://" + directory + "images/default/" + players[array[i]-1] + ".png" ) {
+                    console.log(true);
+                    $( "#" + array[i] )[0].src = "file://" + directory + "images/select/" + players[array[i]-1] + ".png";
+                } else {
+                    console.log(false);
+                    $( "#" + array[i] )[0].src = "file://" + directory + "images/default/" + players[array[i]-1] + ".png";
+                }
+            }
+        }, 200);
+    }
+
     $( ".box").click(function() {
         if ( deciding == false ){
             deciding = true;
-            var index = this.id - 1;
-            console.log(index);
+            index = this.id - 1;
+            idName = "#" + this.id
             var flashing = setInterval(function(){
-                if ( texts[index].innerHTML == "X" ) {
-                    texts[index].innerHTML = "O";
+                d = new Date();
+                if ( $(idName)[0].src === "file://" + directory + "images/default/" + players[index] + ".png" ) {
+                    console.log(true);
+                    $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
                 } else {
-                    texts[index].innerHTML = "X";
+                    console.log(false);
+                    $(idName)[0].src = "file://" + directory + "images/default/" + players[index] + ".png";
                 }
-            }, 200)
+            }, 300)
 
             var x = document.createElement("button");
             var o = document.createElement("button");
@@ -53,6 +79,7 @@ $('document').ready(function(){
             body.appendChild(o);
 
             $("#xButton").click(function() {
+                ding.play();
                 console.log("X");
                 clearInterval(flashing);
                 texts[index].innerHTML = "X";
@@ -61,13 +88,16 @@ $('document').ready(function(){
                 console.log(xPositions);
                 $("#xButton").remove();
                 $("#oButton").remove();
+                $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
                 if ( isWinner(xPositions) ) {
+                    win.play();
                     deciding = true; //to prevent another click
-                    alert("X wins the game!");
+                    winFlash(xPositions);
                 }
             });
 
             $("#oButton").click(function() {
+                ding.play();
                 console.log("O");
                 clearInterval(flashing);
                 texts[index].innerHTML = "O";
@@ -76,9 +106,11 @@ $('document').ready(function(){
                 console.log(oPositions);
                 $("#xButton").remove();
                 $("#oButton").remove();
+                $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
                 if ( isWinner(oPositions) ) {
+                    win.play();
                     deciding = true; //to prevent another click
-                    alert("O wins the game!");
+                    winFlash(oPositions);
                 }
             });
         }
