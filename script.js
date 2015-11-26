@@ -13,10 +13,20 @@ $('document').ready(function(){
     document.getElementById("9").src = "images/default/" + players[8] + ".png";
 
     var texts = document.getElementsByClassName("text");
+    var deciding = false;
 
     $( ".box").click(function() {
-        var index = this.id - 1;
-        console.log(index);
-        texts[index].innerHTML = "X";
+        if ( deciding == false ){
+            deciding = true;
+            var index = this.id - 1;
+            console.log(index);
+            setInterval(function(){
+                if ( texts[index].innerHTML == "X" ) {
+                    texts[index].innerHTML = "O";
+                } else {
+                    texts[index].innerHTML = "X";
+                }
+            }, 200)
+        }
     });
 });
