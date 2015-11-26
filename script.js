@@ -61,6 +61,10 @@ $('document').ready(function(){
                 console.log(xPositions);
                 $("#xButton").remove();
                 $("#oButton").remove();
+                if ( isWinner(xPositions) ) {
+                    deciding = true; //to prevent another click
+                    alert("X wins the game!");
+                }
             });
 
             $("#oButton").click(function() {
@@ -72,6 +76,10 @@ $('document').ready(function(){
                 console.log(oPositions);
                 $("#xButton").remove();
                 $("#oButton").remove();
+                if ( isWinner(oPositions) ) {
+                    deciding = true; //to prevent another click
+                    alert("O wins the game!");
+                }
             });
         }
     });
