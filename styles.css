@@ -1,0 +1,73 @@
+.row{
+    display: inline-block;
+}
+
+body{
+    width: 550px;
+    height: 550px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+    background-image: url("images/background.jpg");
+}
+
+p{
+    font-size:30pt;
+    font-family:"Impact";
+    color: white;
+    position: absolute;
+}
+
+img.background{
+    position: absolute;
+}
+
+#text1{
+    top: 57px;
+    left: 77px;
+}
+
+#text2{
+    top: 57px;
+    left: 256px;
+}
+
+#text3{
+    top: 57px;
+    left: 437px;
+}
+
+#text4{
+    top: 236px;
+    left:77px;
+}
+
+#text5{
+    top: 236px;
+    left: 256px;
+}
+
+#text6{
+    top: 236px;
+    left: 437px;
+}
+
+#text7{
+    top: 415px;
+    left: 77px;
+}
+
+#text8{
+    top: 415px;
+    left: 256px;
+}
+
+#text9{
+    top: 415px;
+    left: 437px;
+}
