@@ -19,6 +19,8 @@ $('document').ready(function(){
     var win = document.createElement('audio');
     win.setAttribute('src', 'win.mp3');
 
+    winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+
     //Set up new game.
     function reset() {
         for ( i = 0; i < texts.length; i++ ) {
@@ -45,7 +47,6 @@ $('document').ready(function(){
         if ( array.length == 5 ) {
             return true;
         }
-        var winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
         for ( i = 0; i < winCombos.length; i++ ) {
             item = winCombos[i];
             if ( array.indexOf(item[0]) != -1 && array.indexOf(item[1]) != -1 && array.indexOf(item[2]) != -1 ) {
@@ -53,6 +54,22 @@ $('document').ready(function(){
             }
         }
         return false;
+    }
+
+    //Check if the move is a block. (Checks opponent's array.) DOESN'T WORK YET.
+    function isBlock(array) {
+        for ( i = 0; i < winCombos.length; i++ ) {
+            item = winCombos[i];
+            if ( array.indexOf(item[0]) != -1 && array.indexOf(item[1]) != -1 && array.indexOf(item[2]) == -1 ) {
+                return true;
+            } else if ( array.indexOf(item[0]) != -1 && array.indexOf(item[1]) == -1 && array.indexOf(item[2]) != -1 ) {
+                return true;
+            } else if ( array.indexOf(item[0]) == -1 && array.indexOf(item[1]) != -1 && array.indexOf(item[2]) != -1 ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     //Win animation.
