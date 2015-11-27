@@ -50,6 +50,7 @@ $('document').ready(function() {
         for ( var i = 0; i < winCombos.length; i++ ) {
             var item = winCombos[i];
             if ( array.indexOf(item[0]) != -1 && array.indexOf(item[1]) != -1 && array.indexOf(item[2]) != -1 ) {
+                xPositions = [item[0], item[1], item[2]];
                 return true;
             }
         }
