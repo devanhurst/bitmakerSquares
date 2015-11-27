@@ -6,20 +6,29 @@ $('document').ready(function() {
 
     // Select players.
     var students = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james", "jeff", "jong", "jonk", "jordan", "lauren", "margaret", "matt", "mike", "patrick", "rex", "rob", "ryan", "scott", "steph", "tyler", "zain"];
-    var players = ["lauren", "zain", "hershel", "ryan", "avi", "alon", "james", "margaret", "mike"];
+    var players = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james"];
 
     //Constants
     var body = document.getElementsByTagName("body")[0];
     var texts = document.getElementsByClassName("text");
-    deciding = false;
+    var winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+    var deciding = false;
 
+    //Sounds
     var ding = document.createElement('audio');
     ding.setAttribute('src', 'sounds/ding.mp3');
 
     var win = document.createElement('audio');
     win.setAttribute('src', 'sounds/win.mp3');
 
-    var winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+    var questionAppear = document.createElement('audio');
+    questionAppear.setAttribute('src', 'sounds/questionappear.mp3');
+
+    var question = document.createElement('audio');
+    question.setAttribute('src', 'sounds/question.mp3');
+
+    var noPoint = document.createElement('audio');
+    noPoint.setAttribute('src', 'sounds/nopoint.mp3');
 
     // Animate Background.
 
@@ -47,7 +56,6 @@ $('document').ready(function() {
 
         xPositions = [];
         oPositions = [];
-
         deciding = false;
     }
 
@@ -135,8 +143,13 @@ $('document').ready(function() {
                 cancel.innerHTML = "CANCEL";
                 cancel.id = "cancelButton"
                 body.appendChild(cancel);
+                question.load();
+                question.play();
+                questionAppear.load();
+                questionAppear.play();
 
                 $("#xButton").click(function() {
+                    question.pause();
                     console.log("X");
                     clearInterval(flashing);
                     texts[index].innerHTML = "X";
@@ -146,7 +159,7 @@ $('document').ready(function() {
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
-                    $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
+                    $(idName)[0].src = "file://" + directory + "images/confirm/" + players[index] + ".png";
                     if ( isWinner(xPositions) ) {
                         win.play();
                         deciding = true; //to prevent another click
@@ -159,6 +172,7 @@ $('document').ready(function() {
                 });
 
                 $("#oButton").click(function() {
+                    question.pause();
                     console.log("O");
                     clearInterval(flashing);
                     texts[index].innerHTML = "O";
@@ -168,7 +182,7 @@ $('document').ready(function() {
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
-                    $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
+                    $(idName)[0].src = "file://" + directory + "images/confirm/" + players[index] + ".png";
                     if ( isWinner(oPositions) ) {
                         win.play();
                         deciding = true; //to prevent another click
@@ -181,6 +195,8 @@ $('document').ready(function() {
                 });
 
                 $("#cancelButton").click(function() {
+                    question.pause();
+                    noPoint.play();
                     console.log("cancel");
                     clearInterval(flashing);
                     deciding = false;
