@@ -14,10 +14,10 @@ $('document').ready(function() {
     deciding = false;
 
     var ding = document.createElement('audio');
-    ding.setAttribute('src', 'ding.mp3');
+    ding.setAttribute('src', 'sounds/ding.mp3');
 
     var win = document.createElement('audio');
-    win.setAttribute('src', 'win.mp3');
+    win.setAttribute('src', 'sounds/win.mp3');
 
     var winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 
