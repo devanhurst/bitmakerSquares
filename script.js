@@ -23,12 +23,12 @@ $('document').ready(function() {
 
     // Animate Background.
 
-    $("body").animate({backgroundPositionX: "-=100"}, 10000);
-    $("body").animate({backgroundPositionX: "+=100"}, 10000);
+    $("body").animate({backgroundPositionX: "-=500"}, 30000, "linear");
+    $("body").animate({backgroundPositionX: "+=500"}, 30000, "linear");
     setInterval((function(){
-        $("body").animate({backgroundPositionX: "-=100"}, 10000);
-        $("body").animate({backgroundPositionX: "+=100"}, 10000);
-    }), 20000);
+        $("body").animate({backgroundPositionX: "-=500"}, 30000, "linear");
+        $("body").animate({backgroundPositionX: "+=500"}, 30000, "linear");
+    }), 60000);
 
     //Set up new game.
     function reset() {
@@ -53,15 +53,15 @@ $('document').ready(function() {
 
     //Check if there is a winner.
     function isWinner(array) {
-        if ( array.length == 5 ) {
-            return true;
-        }
         for ( var i = 0; i < winCombos.length; i++ ) {
             var item = winCombos[i];
             if ( array.indexOf(item[0]) != -1 && array.indexOf(item[1]) != -1 && array.indexOf(item[2]) != -1 ) {
                 xPositions = [item[0], item[1], item[2]];
                 return true;
             }
+        }
+        if ( array.length == 5 ) {
+            return true;
         }
         return false;
     }
@@ -153,6 +153,7 @@ $('document').ready(function() {
                         winFlash(xPositions);
                         setTimeout(reset, 5000);
                     } else {
+                        ding.load();
                         ding.play();
                     }
                 });
@@ -174,6 +175,7 @@ $('document').ready(function() {
                         winFlash(oPositions);
                         setTimeout(reset, 5000);
                     } else {
+                        ding.load();
                         ding.play();
                     }
                 });
