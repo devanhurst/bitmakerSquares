@@ -58,8 +58,8 @@ $('document').ready(function() {
 
     //Check if the move is a block. (Checks opponent's array.) DOESN'T WORK YET.
     function isBlock(array) {
-        for ( i = 0; i < winCombos.length; i++ ) {
-            item = winCombos[i];
+        for ( var i = 0; i < winCombos.length; i++ ) {
+            var item = winCombos[i];
             if ( array.indexOf(item[0]) != -1 && array.indexOf(item[1]) != -1 && array.indexOf(item[2]) == -1 ) {
                 return true;
             } else if ( array.indexOf(item[0]) != -1 && array.indexOf(item[1]) == -1 && array.indexOf(item[2]) != -1 ) {
@@ -94,6 +94,7 @@ $('document').ready(function() {
     reset();
 
     $( ".box").click(function() {
+        //If a box is selected, accept no clicks.
         if ( deciding == true ){
             return false;
         } else {
@@ -114,12 +115,16 @@ $('document').ready(function() {
 
                 var x = document.createElement("button");
                 var o = document.createElement("button");
+                var cancel = document.createElement("button");
                 x.innerHTML = "X";
                 x.id = "xButton"
                 body.appendChild(x);
                 o.innerHTML = "O";
                 o.id = "oButton"
                 body.appendChild(o);
+                cancel.innerHTML = "CANCEL";
+                cancel.id = "cancelButton"
+                body.appendChild(cancel);
 
                 $("#xButton").click(function() {
                     console.log("X");
@@ -130,6 +135,7 @@ $('document').ready(function() {
                     console.log(xPositions);
                     $("#xButton").remove();
                     $("#oButton").remove();
+                    $("#cancelButton").remove();
                     $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
                     if ( isWinner(xPositions) ) {
                         win.play();
@@ -150,6 +156,7 @@ $('document').ready(function() {
                     console.log(oPositions);
                     $("#xButton").remove();
                     $("#oButton").remove();
+                    $("#cancelButton").remove();
                     $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
                     if ( isWinner(oPositions) ) {
                         win.play();
@@ -159,6 +166,16 @@ $('document').ready(function() {
                     } else {
                         ding.play();
                     }
+                });
+
+                $("#cancelButton").click(function() {
+                    console.log("cancel");
+                    clearInterval(flashing);
+                    deciding = false;
+                    $("#xButton").remove();
+                    $("#oButton").remove();
+                    $("#cancelButton").remove();
+                    $(idName)[0].src = "file://" + directory + "images/default/" + players[index] + ".png";
                 });
             }
         }
