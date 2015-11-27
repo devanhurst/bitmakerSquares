@@ -1,22 +1,14 @@
 $('document').ready(function(){
 
+    // Find app directory for setting images later.
     directory = window.location.pathname;
     directory = directory.substring(0, directory.lastIndexOf('/')) + "/";
+
+    // Select players.
     var students = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james", "jeff", "jong", "jonk", "jordan", "lauren", "margaret", "matt", "mike", "patrick", "rex", "rob", "ryan", "scott", "steph", "tyler", "zain"];
+    players = ["devan", "colin", "hershel", "ryan", "avi", "alon", "james", "margaret", "mike"];
 
-
-    players = ["devan", "alon", "avi", "ryan", "lauren", "tyler", "matt", "margaret", "mike"];
-
-    document.getElementById("1").src = "images/default/" + players[0] + ".png";
-    document.getElementById("2").src = "images/default/" + players[1] + ".png";
-    document.getElementById("3").src = "images/default/" + players[2] + ".png";
-    document.getElementById("4").src = "images/default/" + players[3] + ".png";
-    document.getElementById("5").src = "images/default/" + players[4] + ".png";
-    document.getElementById("6").src = "images/default/" + players[5] + ".png";
-    document.getElementById("7").src = "images/default/" + players[6] + ".png";
-    document.getElementById("8").src = "images/default/" + players[7] + ".png";
-    document.getElementById("9").src = "images/default/" + players[8] + ".png";
-
+    //Constants
     var body = document.getElementsByTagName("body")[0];
     var texts = document.getElementsByClassName("text");
     var deciding = false;
@@ -27,6 +19,28 @@ $('document').ready(function(){
     var win = document.createElement('audio');
     win.setAttribute('src', 'win.mp3');
 
+    //Set up new game.
+    function reset() {
+        for ( i = 0; i < texts.length; i++ ) {
+        texts[i].innerHTML = "";
+        }
+        document.getElementById("1").src = "images/default/" + players[0] + ".png";
+        document.getElementById("2").src = "images/default/" + players[1] + ".png";
+        document.getElementById("3").src = "images/default/" + players[2] + ".png";
+        document.getElementById("4").src = "images/default/" + players[3] + ".png";
+        document.getElementById("5").src = "images/default/" + players[4] + ".png";
+        document.getElementById("6").src = "images/default/" + players[5] + ".png";
+        document.getElementById("7").src = "images/default/" + players[6] + ".png";
+        document.getElementById("8").src = "images/default/" + players[7] + ".png";
+        document.getElementById("9").src = "images/default/" + players[8] + ".png";
+
+        xPositions = [];
+        oPositions = [];
+
+        deciding = false;
+    }
+
+    //Check if there is a winner.
     function isWinner(array) {
         if ( array.length == 5 ) {
             return true;
@@ -41,9 +55,7 @@ $('document').ready(function(){
         return false;
     }
 
-    var xPositions = [];
-    var oPositions = [];
-
+    //Win animation.
     function winFlash(array) {
         var flashing = setInterval(function(){
             for ( i = 0; i < array.length; i++ ) {
@@ -56,7 +68,13 @@ $('document').ready(function(){
                 }
             }
         }, 200);
+        setTimeout((function(){
+            clearInterval(flashing);
+        }), 5000);
     }
+
+    //Main
+    reset();
 
     $( ".box").click(function() {
         console.log(this);
@@ -100,6 +118,7 @@ $('document').ready(function(){
                         win.play();
                         deciding = true; //to prevent another click
                         winFlash(xPositions);
+                        setTimeout(reset, 5000);
                     }
                 });
 
@@ -118,6 +137,7 @@ $('document').ready(function(){
                         win.play();
                         deciding = true; //to prevent another click
                         winFlash(oPositions);
+                        setTimeout(reset, 5000);
                     }
                 });
             }
