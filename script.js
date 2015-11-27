@@ -21,6 +21,15 @@ $('document').ready(function() {
 
     var winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 
+    // Animate Background.
+
+    $("body").animate({backgroundPositionX: "-=100"}, 10000);
+    $("body").animate({backgroundPositionX: "+=100"}, 10000);
+    setInterval((function(){
+        $("body").animate({backgroundPositionX: "-=100"}, 10000);
+        $("body").animate({backgroundPositionX: "+=100"}, 10000);
+    }), 20000);
+
     //Set up new game.
     function reset() {
         for ( i = 0; i < texts.length; i++ ) {
