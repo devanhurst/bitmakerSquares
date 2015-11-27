@@ -1,17 +1,17 @@
-$('document').ready(function(){
+$('document').ready(function() {
 
     // Find app directory for setting images later.
-    directory = window.location.pathname;
+    var directory = window.location.pathname;
     directory = directory.substring(0, directory.lastIndexOf('/')) + "/";
 
     // Select players.
     var students = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james", "jeff", "jong", "jonk", "jordan", "lauren", "margaret", "matt", "mike", "patrick", "rex", "rob", "ryan", "scott", "steph", "tyler", "zain"];
-    players = ["devan", "colin", "hershel", "ryan", "avi", "alon", "james", "margaret", "mike"];
+    var players = ["lauren", "zain", "hershel", "ryan", "avi", "alon", "james", "margaret", "mike"];
 
     //Constants
     var body = document.getElementsByTagName("body")[0];
     var texts = document.getElementsByClassName("text");
-    var deciding = false;
+    deciding = false;
 
     var ding = document.createElement('audio');
     ding.setAttribute('src', 'ding.mp3');
@@ -19,7 +19,7 @@ $('document').ready(function(){
     var win = document.createElement('audio');
     win.setAttribute('src', 'win.mp3');
 
-    winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+    var winCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 
     //Set up new game.
     function reset() {
@@ -47,8 +47,8 @@ $('document').ready(function(){
         if ( array.length == 5 ) {
             return true;
         }
-        for ( i = 0; i < winCombos.length; i++ ) {
-            item = winCombos[i];
+        for ( var i = 0; i < winCombos.length; i++ ) {
+            var item = winCombos[i];
             if ( array.indexOf(item[0]) != -1 && array.indexOf(item[1]) != -1 && array.indexOf(item[2]) != -1 ) {
                 return true;
             }
@@ -94,10 +94,11 @@ $('document').ready(function(){
     reset();
 
     $( ".box").click(function() {
-        console.log(this);
-        index = this.id - 1;
-        if ( texts[index].innerHTML == "" ) {
-            if ( deciding == false ){
+        if ( deciding == true ){
+            return false;
+        } else {
+            index = this.id - 1;
+            if ( texts[index].innerHTML == "" ) {
                 deciding = true;
                 idName = "#" + this.id
                 var flashing = setInterval(function(){
@@ -121,7 +122,6 @@ $('document').ready(function(){
                 body.appendChild(o);
 
                 $("#xButton").click(function() {
-                    ding.play();
                     console.log("X");
                     clearInterval(flashing);
                     texts[index].innerHTML = "X";
@@ -136,11 +136,12 @@ $('document').ready(function(){
                         deciding = true; //to prevent another click
                         winFlash(xPositions);
                         setTimeout(reset, 5000);
+                    } else {
+                        ding.play();
                     }
                 });
 
                 $("#oButton").click(function() {
-                    ding.play();
                     console.log("O");
                     clearInterval(flashing);
                     texts[index].innerHTML = "O";
@@ -155,6 +156,8 @@ $('document').ready(function(){
                         deciding = true; //to prevent another click
                         winFlash(oPositions);
                         setTimeout(reset, 5000);
+                    } else {
+                        ding.play();
                     }
                 });
             }
