@@ -6,7 +6,7 @@ $('document').ready(function() {
 
     // Select players.
     var students = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james", "jeff", "jong", "jonk", "jordan", "lauren", "margaret", "matt", "mike", "patrick", "rex", "rob", "ryan", "scott", "steph", "tyler", "zain"];
-    var players = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james"];
+    var players = ["andrew", "zain", "matt", "lauren", "jeff", "ryan", "mike", "devan", "tyler"];
 
     //Constants
     var body = document.getElementsByTagName("body")[0];
