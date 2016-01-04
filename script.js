@@ -6,7 +6,7 @@ $('document').ready(function() {
 
     // Select players.
     var students = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james", "jeff", "jong", "jonk", "jordan", "lauren", "margaret", "matt", "mike", "patrick", "rex", "rob", "ryan", "scott", "steph", "tyler", "zain"];
-    var players = ["matt", "tyler", "ryan", "andrew", "matt", "tyler", "ryan", "andrew", "matt"];
+    var players = ["matt", "tyler", "ryan", "lauren", "devan", "dan", "margaret", "hershel", "avi"];
 
     //Constants
     var body = document.getElementsByTagName("body")[0];
@@ -121,7 +121,6 @@ $('document').ready(function() {
                 deciding = true;
                 idName = "#" + this.id
                 var flashing = setInterval(function(){
-                    d = new Date();
                     if ( $(idName)[0].src === "file://" + directory + "images/default/" + players[index] + ".png" ) {
                         console.log(true);
                         $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
