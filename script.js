@@ -121,12 +121,12 @@ $('document').ready(function() {
                 deciding = true;
                 idName = "#" + this.id
                 var flashing = setInterval(function(){
-                    if ( $(idName)[0].src === "file://" + directory + "images/default/" + players[index] + ".png" ) {
+                    if ( $(idName)[0].src === "http://" + directory + "images/default/" + players[index] + ".png" ) {
                         console.log(true);
-                        $(idName)[0].src = "file://" + directory + "images/select/" + players[index] + ".png";
+                        $(idName)[0].src = "http://" + directory + "images/select/" + players[index] + ".png";
                     } else {
                         console.log(false);
-                        $(idName)[0].src = "file://" + directory + "images/default/" + players[index] + ".png";
+                        $(idName)[0].src = "http://" + directory + "images/default/" + players[index] + ".png";
                     }
                 }, 300)
 
@@ -158,7 +158,7 @@ $('document').ready(function() {
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
-                    $(idName)[0].src = "file://" + directory + "images/confirm/" + players[index] + ".png";
+                    $(idName)[0].src = "http://" + directory + "images/confirm/" + players[index] + ".png";
                     if ( isWinner(xPositions) ) {
                         win.play();
                         deciding = true; //to prevent another click
@@ -181,7 +181,7 @@ $('document').ready(function() {
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
-                    $(idName)[0].src = "file://" + directory + "images/confirm/" + players[index] + ".png";
+                    $(idName)[0].src = "http://" + directory + "images/confirm/" + players[index] + ".png";
                     if ( isWinner(oPositions) ) {
                         win.play();
                         deciding = true; //to prevent another click
@@ -202,7 +202,7 @@ $('document').ready(function() {
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
-                    $(idName)[0].src = "file://" + directory + "images/default/" + players[index] + ".png";
+                    $(idName)[0].src = "http://" + directory + "images/default/" + players[index] + ".png";
                 });
             }
         }
