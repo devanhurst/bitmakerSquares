@@ -120,7 +120,7 @@ $('document').ready(function() {
             if ( texts[index].innerHTML == "" ) {
                 deciding = true;
                 idName = "#" + this.id
-                console.log(players[index])
+                console.log(players[index]);
                 var flashing = setInterval(function(){
                     if ( $(idName)[0].src === "http://devanhurst.github.io/bitmakerSquares/images/default/" + players[index] + ".png" ) {
                         console.log(true);
