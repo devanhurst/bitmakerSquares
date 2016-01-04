@@ -5,8 +5,8 @@ $('document').ready(function() {
     directory = directory.substring(0, directory.lastIndexOf('/')) + "/";
 
     // Select players.
-    var students = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james", "jeff", "jong", "jonk", "jordan", "lauren", "margaret", "matt", "mike", "patrick", "rex", "rob", "ryan", "scott", "steph", "tyler", "zain"];
-    var players = ["matt", "tyler", "ryan", "lauren", "devan", "dan", "margaret", "hershel", "avi"];
+    students = ["alon", "andrew", "avi", "carlos", "colin", "dan", "devan", "hershel", "james", "jeff", "jong", "jonk", "jordan", "lauren", "margaret", "matt", "mike", "patrick", "rex", "rob", "ryan", "scott", "steph", "tyler", "zain"];
+    players = ["matt", "tyler", "ryan", "lauren", "devan", "dan", "margaret", "hershel", "avi"];
 
     //Constants
     var body = document.getElementsByTagName("body")[0];
