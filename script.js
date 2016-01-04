@@ -94,12 +94,12 @@ $('document').ready(function() {
     function winFlash(array) {
         var flashing = setInterval(function(){
             for ( i = 0; i < array.length; i++ ) {
-                if ( $( "#" + array[i] )[0].src === "file://" + directory + "images/default/" + players[array[i]-1] + ".png" ) {
+                if ( $( "#" + array[i] )[0].src === "http://devanhurst.github.io/" + directory + "images/default/" + players[array[i]-1] + ".png" ) {
                     console.log(true);
-                    $( "#" + array[i] )[0].src = "file://" + directory + "images/select/" + players[array[i]-1] + ".png";
+                    $( "#" + array[i] )[0].src = "http://devanhurst.github.io/" + directory + "images/select/" + players[array[i]-1] + ".png";
                 } else {
                     console.log(false);
-                    $( "#" + array[i] )[0].src = "file://" + directory + "images/default/" + players[array[i]-1] + ".png";
+                    $( "#" + array[i] )[0].src = "http://devanhurst.github.io/" + directory + "images/default/" + players[array[i]-1] + ".png";
                 }
             }
         }, 200);
@@ -121,12 +121,12 @@ $('document').ready(function() {
                 deciding = true;
                 idName = "#" + this.id
                 var flashing = setInterval(function(){
-                    if ( $(idName)[0].src === "http://" + directory + "images/default/" + players[index] + ".png" ) {
+                    if ( $(idName)[0].src === "http://devanhurst.github.io/" + directory + "images/default/" + players[index] + ".png" ) {
                         console.log(true);
-                        $(idName)[0].src = "http://" + directory + "images/select/" + players[index] + ".png";
+                        $(idName)[0].src = "http://devanhurst.github.io/" + directory + "images/select/" + players[index] + ".png";
                     } else {
                         console.log(false);
-                        $(idName)[0].src = "http://" + directory + "images/default/" + players[index] + ".png";
+                        $(idName)[0].src = "http://devanhurst.github.io/" + directory + "images/default/" + players[index] + ".png";
                     }
                 }, 300)
 
@@ -158,7 +158,7 @@ $('document').ready(function() {
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
-                    $(idName)[0].src = "http://" + directory + "images/confirm/" + players[index] + ".png";
+                    $(idName)[0].src = "http://devanhurst.github.io/" + directory + "images/confirm/" + players[index] + ".png";
                     if ( isWinner(xPositions) ) {
                         win.play();
                         deciding = true; //to prevent another click
@@ -181,7 +181,7 @@ $('document').ready(function() {
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
-                    $(idName)[0].src = "http://" + directory + "images/confirm/" + players[index] + ".png";
+                    $(idName)[0].src = "http://devanhurst.github.io/" + directory + "images/confirm/" + players[index] + ".png";
                     if ( isWinner(oPositions) ) {
                         win.play();
                         deciding = true; //to prevent another click
@@ -202,7 +202,7 @@ $('document').ready(function() {
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
-                    $(idName)[0].src = "http://" + directory + "images/default/" + players[index] + ".png";
+                    $(idName)[0].src = "http://devanhurst.github.io/" + directory + "images/default/" + players[index] + ".png";
                 });
             }
         }
