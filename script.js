@@ -122,7 +122,7 @@ $('document').ready(function() {
                 idName = "#" + this.id
                 console.log(index);
                 var flashing = setInterval(function(){
-                    if ( $(idName)[0].src === "http://devanhurst.github.io/bitmakerSquares/images/default/matt.png" ) {
+                    if ( $(idName)[0].src === "http://devanhurst.github.io/bitmakerSquares/images/default/" + players[index] + ".png" || $(idName)[0].src === "images/default/" + players[index] + ".png" ) {
                         console.log(true);
                         $(idName)[0].src = "http://devanhurst.github.io/bitmakerSquares/images/select/" + players[index] + ".png";
                     } else {
