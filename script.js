@@ -120,9 +120,9 @@ $('document').ready(function() {
             if ( texts[index].innerHTML == "" ) {
                 deciding = true;
                 idName = "#" + this.id
-                console.log(players[index]);
+                console.log(index);
                 var flashing = setInterval(function(){
-                    if ( $(idName)[0].src === "http://devanhurst.github.io/bitmakerSquares/images/default/" + players[index] + ".png" ) {
+                    if ( $(idName)[0].src === "http://devanhurst.github.io/bitmakerSquares/images/default/matt.png" ) {
                         console.log(true);
                         $(idName)[0].src = "http://devanhurst.github.io/bitmakerSquares/images/select/" + players[index] + ".png";
                     } else {
