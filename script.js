@@ -95,10 +95,8 @@ $('document').ready(function() {
         var flashing = setInterval(function(){
             for ( i = 0; i < array.length; i++ ) {
                 if ( $( "#" + array[i] )[0].src === "http://devanhurst.github.io/bitmakerSquares/images/default/" + players[array[i]-1] + ".png" ) {
-                    console.log(true);
                     $( "#" + array[i] )[0].src = "http://devanhurst.github.io/bitmakerSquares/images/select/" + players[array[i]-1] + ".png";
                 } else {
-                    console.log(false);
                     $( "#" + array[i] )[0].src = "http://devanhurst.github.io/bitmakerSquares/images/default/" + players[array[i]-1] + ".png";
                 }
             }
@@ -120,13 +118,10 @@ $('document').ready(function() {
             if ( texts[index].innerHTML == "" ) {
                 deciding = true;
                 idName = "#" + this.id
-                console.log(index);
                 var flashing = setInterval(function(){
                     if ( $(idName)[0].src === "http://devanhurst.github.io/bitmakerSquares/images/default/" + players[index] + ".png" || $(idName)[0].src === "images/default/" + players[index] + ".png" ) {
-                        console.log(true);
                         $(idName)[0].src = "http://devanhurst.github.io/bitmakerSquares/images/select/" + players[index] + ".png";
                     } else {
-                        console.log(false);
                         $(idName)[0].src = "http://devanhurst.github.io/bitmakerSquares/images/default/" + players[index] + ".png";
                     }
                 }, 300)
@@ -150,12 +145,10 @@ $('document').ready(function() {
 
                 $("#xButton").click(function() {
                     question.pause();
-                    console.log("X");
                     clearInterval(flashing);
                     texts[index].innerHTML = "X";
                     deciding = false;
                     xPositions.push(index + 1);
-                    console.log(xPositions);
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
@@ -173,12 +166,10 @@ $('document').ready(function() {
 
                 $("#oButton").click(function() {
                     question.pause();
-                    console.log("O");
                     clearInterval(flashing);
                     texts[index].innerHTML = "O";
                     deciding = false;
                     oPositions.push(index + 1);
-                    console.log(oPositions);
                     $("#xButton").remove();
                     $("#oButton").remove();
                     $("#cancelButton").remove();
@@ -197,7 +188,6 @@ $('document').ready(function() {
                 $("#cancelButton").click(function() {
                     question.pause();
                     noPoint.play();
-                    console.log("cancel");
                     clearInterval(flashing);
                     deciding = false;
                     $("#xButton").remove();
