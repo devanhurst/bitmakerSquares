@@ -30,14 +30,14 @@ $('document').ready(function() {
     var noPoint = document.createElement('audio');
     noPoint.setAttribute('src', 'sounds/nopoint.mp3');
 
-    // Animate Background.
+    // // Animate Background. HOLY FUCKING CPU
 
-    $("body").animate({backgroundPositionX: "-=500"}, 30000, "linear");
-    $("body").animate({backgroundPositionX: "+=500"}, 30000, "linear");
-    setInterval((function(){
-        $("body").animate({backgroundPositionX: "-=500"}, 30000, "linear");
-        $("body").animate({backgroundPositionX: "+=500"}, 30000, "linear");
-    }), 60000);
+    // $("body").animate({backgroundPositionX: "-=500"}, 30000, "linear");
+    // $("body").animate({backgroundPositionX: "+=500"}, 30000, "linear");
+    // setInterval((function(){
+    //     $("body").animate({backgroundPositionX: "-=500"}, 30000, "linear");
+    //     $("body").animate({backgroundPositionX: "+=500"}, 30000, "linear");
+    // }), 60000);
 
     //Set up new game.
     function reset() {
